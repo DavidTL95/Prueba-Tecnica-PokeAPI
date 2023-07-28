@@ -8,23 +8,23 @@ export const Home = () => {
 
     const [allPokemons, setAllPokemon] = useState([]);
 
-    // const getAllPokemons = async () => {
-    //     const respuesta = await axios.get("https://pokeapi.co/api/v2/pokemon");
-    //     const data = await respuesta.data.results;
+    const getAllPokemons = async () => {
+        const respuesta = await axios.get("https://pokeapi.co/api/v2/pokemon");
+        const data = await respuesta.data.results;
 
-    //     // console.log(data.results)
+        // console.log(data.results)
 
-    //     function createPokemon(results){
-    //         results.map((pokemon) => {
-    //             const res = axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`)
-    //             const data = res;
-    //             setAllPokemon((currentList) => [...currentList,data])
-    //         });
-    //     }
-    //     // createPokemon(data.results)
-    //     setAllPokemon(data)
-    //     // console.log(data)
-    // }
+        function createPokemon(results){
+            results.map((poemon) => {
+                const res = axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`)
+                const data = res;
+                setAllPokemon((currentList) => [...currentList,data])
+            });
+        }
+        createPokemon(data.results)
+        setAllPokemon(data)
+        // console.log(data)
+    }
 
     useEffect(()=>{
         getAllPokemons();
@@ -36,7 +36,9 @@ export const Home = () => {
         <div className="pokemonContainer">
             <div className="allContainer">
                 {allPokemons.map((pokemon)=>{
-                    <h1>{pokemon}</h1>
+                    return(
+                    <h1>{pokemon.name}</h1>
+                    )
                 })}
             </div>
         </div>
